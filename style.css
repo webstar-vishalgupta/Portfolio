@@ -9,7 +9,7 @@
 body {
     height: 100%;
     background-color: #000000;
-    background-image: url('images/bg-patetrn.png');
+    background-image: url('assets/images/bg-patetrn.png');
     background-size: contain;
     background-position: top 50px right;
     background-repeat: no-repeat;
