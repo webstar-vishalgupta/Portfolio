@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Gupta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #141414;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 500;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .profiles-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            justify-items: center;
+        }
+        
+        .profile {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none; /* Remove underline from links */
+            display: block; /* Ensure the link takes full space */
+        }
+        
+        .profile:hover {
+            transform: scale(1.1);
+        }
+        
+        .profile-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 3px solid transparent;
+        }
+        
+        .profile:hover .profile-icon {
+            border: 3px solid white;
+        }
+        
+        .profile-name {
+            color: #999;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .profile:hover .profile-name {
+            color: white;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 40px;
+            }
+            
+            .profiles-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .profile-icon {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            .profiles-container {
+                gap: 15px;
+            }
+            
+            .profile-icon {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .profile-name {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Who's Watching?</h1>
+    
+    <div class="profiles-container">
+        <a href="http://127.0.0.1:5500/portfolio.html" class="profile">
+            <img src="images/blue.png" alt="Recruiter" class="profile-icon">
+            <div class="profile-name">Recruiter</div>
+        </a>
+        
+        <a href="http://127.0.0.1:5500/portfolio.html" class="profile">
+            <img src="images/grey.png" alt="Developer" class="profile-icon">
+            <div class="profile-name">Developer</div>
+        </a>
+        
+        <a href="http://127.0.0.1:5500/portfolio.html" class="profile">
+            <img src="images/red.png" alt="Stalker" class="profile-icon">
+            <div class="profile-name">Stalker</div>
+        </a>
+        
+        <a href="http://127.0.0.1:5500/portfolio.html" class="profile">
+            <img src="images/yellow.png" alt="Adventurer" class="profile-icon">
+            <div class="profile-name">Adventurer</div>
+        </a>
+    </div>
+</body>
+</html>

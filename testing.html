@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Intro Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .netflix-logo {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .netflix-logo img {
+            width: 150%;
+        }
+
+        /* Animation */
+        .animate-logo {
+            animation: logoZoom 4s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+        }
+
+        @keyframes logoZoom {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(15);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .netflix-logo img {
+                width: 70%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .netflix-logo img {
+                width: 60%;
+            }
+
+            @keyframes logoZoom {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+
+                50% {
+                    transform: scale(1.6);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: scale(15);
+                    opacity: 0;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="logo-container">
+        <div class="netflix-logo">
+            <img src="assets/images/netflix-style-name-white.png" alt="">
+        </div>
+    </div>
+
+    <audio id="netflixAudio" src="assets/sounds/netflix-sound.mp3" preload="auto"></audio>
+
+    <!-- Netflix Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const logoContainer = document.querySelector('.logo-container');
+          const netflixLogo = document.querySelector('.netflix-logo');
+          const audio = document.getElementById('netflixAudio');
+          let animationStarted = false;
+    
+          function startNetflixAnimation() {
+            if (animationStarted) return;
+            animationStarted = true;
+    
+            // Play audio immediately upon user interaction
+            audio.currentTime = 0;
+            audio.play().then(() => {
+              console.log("Audio playback started.");
+            }).catch(error => {
+              console.warn("Audio playback failed:", error);
+            });
+    
+            // Start logo animation
+            netflixLogo.classList.add('animate-logo');
+    
+            // Redirect after animation completes
+            setTimeout(() => {
+              window.location.href = "http://127.0.0.1:5500/testing.html"; // Update as needed
+            }, 4000);
+          }
+    
+          // Attach event listeners for user interaction
+          logoContainer.addEventListener('click', startNetflixAnimation);
+          logoContainer.addEventListener('touchstart', function (e) {
+            e.preventDefault();
+            startNetflixAnimation();
+          });
+        });
+      </script>
+</body>
+
+</html>
