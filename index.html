@@ -314,44 +314,68 @@
 
     <audio id="netflixAudio" src="assets/sounds/netflix-sound.mp3" preload="auto"></audio>
 
-
-      <!-- Netflix Animation Script -->
-      <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-          const logoContainer = document.querySelector('.logo-container');
-          const netflixLogo = document.querySelector('.netflix-logo');
-          const audio = document.getElementById('netflixAudio');
-          let animationStarted = false;
+            const logoImg = document.querySelector('.netflix-logo img');
+            const netflixLogo = document.querySelector('.netflix-logo');
+            const audio = document.getElementById('netflixAudio');
+            let animationStarted = false;
     
-          function startNetflixAnimation() {
-            if (animationStarted) return;
-            animationStarted = true;
+            // Listen for first click
+            logoImg.addEventListener('click', function () {
+                if (!animationStarted) {
+                    // Start animation on first click
+                    netflixLogo.classList.add('animate-logo');
+                    animationStarted = true;
     
-            // Play audio immediately upon user interaction
-            audio.currentTime = 0;
-            audio.play().then(() => {
-              console.log("Audio playback started.");
-            }).catch(error => {
-              console.warn("Audio playback failed:", error);
+                    // Simulate the second click (play the audio immediately after animation starts)
+                    setTimeout(function () {
+                        audio.currentTime = 0;
+                        audio.play().then(() => {
+                            console.log("Audio playback started.");
+                        }).catch(error => {
+                            console.warn("Audio playback failed:", error);
+                        });
+                    }, 100); // Delay to simulate second click (to ensure animation has started)
+                    
+                    // Redirect after animation completes
+                    setTimeout(() => {
+                        window.location.href = "browse.html"; // Update as needed
+                    }, 4000); // Redirect delay after animation
+                }
             });
     
-            // Start logo animation
-            netflixLogo.classList.add('animate-logo');
+            // Handle touchstart (for mobile devices)
+            logoImg.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                if (!animationStarted) {
+                    // Start animation on first touch
+                    netflixLogo.classList.add('animate-logo');
+                    animationStarted = true;
     
-            // Redirect after animation completes
-            setTimeout(() => {
-              window.location.href = "browse.html"; // Update as needed
-            }, 4000);
-          }
+                    // Simulate second touch (play audio)
+                    setTimeout(function () {
+                        audio.currentTime = 0;
+                        audio.play().then(() => {
+                            console.log("Audio playback started.");
+                        }).catch(error => {
+                            console.warn("Audio playback failed:", error);
+                        });
+                    }, 100); // Delay for a small amount of time
     
-          // Attach event listeners for user interaction
-          logoContainer.addEventListener('click', startNetflixAnimation);
-          logoContainer.addEventListener('touchstart', function (e) {
-            e.preventDefault();
-            startNetflixAnimation();
-          });
+                    // Redirect after animation completes
+                    setTimeout(() => {
+                        window.location.href = "browse.html"; // Update as needed
+                    }, 4000);
+                }
+            });
         });
-      </script>
+    </script>
+    
+
+    
+    
+
       <!-- ------------loader script-------------- -->
     <script>
         // Add this to your existing JavaScript
