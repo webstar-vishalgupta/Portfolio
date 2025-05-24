@@ -1,33 +1,7 @@
-    // Counting animation
-    function countUp(element) {
-        const target = parseInt(element.getAttribute('data-count'));
-        let count = 0;
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
 
-        const timer = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(count);
-            }
-        }, 16);
-    }
 
-    // Start counting when the element is in view
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const numbers = entry.target.querySelectorAll('.stat-number');
-                numbers.forEach(number => countUp(number));
-                observer.unobserve(entry.target);
-            }
-        });
-    });
 
-    observer.observe(document.querySelector('.stats-container'));
+
 
     // Loader script
     window.addEventListener('load', function () {
@@ -175,3 +149,59 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start the typing effect
     typeEffect();
 });
+
+
+
+
+
+
+// -------------Bottom nav Bar -----------------------
+const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('section');
+
+    function updateActiveLink() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-target') === current) {
+          item.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveLink);
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        document.getElementById(item.dataset.target).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+
+
+
+
+// About me tabs Paragraphs
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.tab-panel');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // remove active classes
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+    
+        // add active to current tab
+        tab.classList.add('active');
+        const panelId = tab.getAttribute('data-tab');
+        document.getElementById(panelId).classList.add('active');
+      });
+    });
+    
