@@ -205,3 +205,40 @@ const navItems = document.querySelectorAll('.nav-item');
       });
     });
     
+
+
+
+
+
+    
+    // Counting animation for weork exprience
+                    function countUp(element) {
+                        const target = parseInt(element.getAttribute('data-count'));
+                        let count = 0;
+                        const duration = 2000; // 2 seconds
+                        const increment = target / (duration / 16); // 60fps
+                
+                        const timer = setInterval(() => {
+                            count += increment;
+                            if (count >= target) {
+                                element.textContent = target;
+                                clearInterval(timer);
+                            } else {
+                                element.textContent = Math.floor(count);
+                            }
+                        }, 16);
+                    }
+                
+                    // Start counting when the element is in view
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const numbers = entry.target.querySelectorAll('.stat-number');
+                                numbers.forEach(number => countUp(number));
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    });
+                
+                    observer.observe(document.querySelector('.stats-container'));
+                

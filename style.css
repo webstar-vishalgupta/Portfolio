@@ -16,7 +16,8 @@ body {
     background-position: top 50px right;
     background-repeat: no-repeat;
     min-height: 100vh;
-    scroll-behavior: smooth;
+  
+    
 }
 
 #particles-js {
@@ -33,30 +34,25 @@ header {
     margin: 20px auto;
     position: sticky;
     top: 0px;
-    z-index: 1000;
     transition: top 0.3s ease;
-}
-
-.glass-box {
     z-index: 1;
-    background: rgba(0, 0, 0, 0.1);
-    /* border-radius: 12px; */
-    backdrop-filter: blur(5px);
-    /* -webkit-backdrop-filter: blur(5px); */
+   
 }
 
-.glass-box::before {
+
+
+header::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    background: rgba(31, 31, 31, 0.329);
     z-index: -1;
-    backdrop-filter: blur(10px);
-    /* -webkit-backdrop-filter: blur(10px); */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 nav {
@@ -326,7 +322,49 @@ section {
     margin-top: -10px;
 }
 
+ /* ---------Woek--exprience---------- */
 
+ .stats-container {
+    display: inline-flex;
+    max-width: fit-content;
+    margin: 32px 0;
+    gap: 24px;
+    padding: 18px 24px;
+    background: rgba(126, 126, 126, 0.05);
+    backdrop-filter: blur(3px);
+    border-radius: 15px;
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+}
+
+.stat-item {
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.stat-plus {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.stat-label {
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 
 
@@ -731,6 +769,7 @@ footer {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s;
+    text-decoration: none;
 }
 
 .social-icon:hover {

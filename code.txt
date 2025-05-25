@@ -1,59 +1,4 @@
-  <!-- ------------work-experience------------ -->
-                <div class="work-exp">
-                    <div class="stats-container">
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="5">0</span>
-                            <span class="stat-plus">+</span>
-                            <p class="stat-label">Experiences</p>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="20">0</span>
-                            <span class="stat-plus">+</span>
-                            <p class="stat-label">Project done</p>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="80">0</span>
-                            <span class="stat-plus">+</span>
-                            <p class="stat-label">Happy Clients</p>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-                    // Counting animation
-    function countUp(element) {
-        const target = parseInt(element.getAttribute('data-count'));
-        let count = 0;
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
-
-        const timer = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(count);
-            }
-        }, 16);
-    }
-
-    // Start counting when the element is in view
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const numbers = entry.target.querySelectorAll('.stat-number');
-                numbers.forEach(number => countUp(number));
-                observer.unobserve(entry.target);
-            }
-        });
-    });
-
-    observer.observe(document.querySelector('.stats-container'));
+  
 
 
 
@@ -61,47 +6,21 @@
 
 
 
-    /* ---------Woek--exprience---------- */
 
-.stats-container {
-    display: flex;
-    max-width: fit-content;
-    margin: 32px 0;
-    gap: 24px;
-    padding: 18px 24px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
 
-.stat-item {
-    text-align: center;
-    color: #fff;
-    transition: transform 0.3s ease;
-}
 
-.stat-item:hover {
-    transform: translateY(-3px);
-}
 
-.stat-number {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-}
+   
 
-.stat-plus {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-}
 
-.stat-label {
-    margin-top: 5px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+
+
+
+
+
+
+
+
+
+
 
