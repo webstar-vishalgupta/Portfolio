@@ -98,57 +98,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // typewriter effect
-document.addEventListener('DOMContentLoaded', function() {
-    const subtitleElement = document.querySelector('.hero-subtitle');
-    const texts = [
-        "Full Stack Developer",
-        "Entrepreneur",
-        "Video Game Developer",
-        "AI/ML Enthusiast",
-        "SaaS Product Builder"
-    ];
-    
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingDelay = 30; // Delay between each character when typing
-    let deletingDelay = 20; // Delay between each character when deleting
-    let newTextDelay = 2000; // Delay before starting to delete text
-    
-    function typeEffect() {
-        const currentText = texts[textIndex];
-        
-        if (isDeleting) {
-            // Deleting text
-            subtitleElement.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            typingDelay = deletingDelay;
-        } else {
-            // Typing text
-            subtitleElement.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typingDelay = 30;
-        }
-        
-        // If we've finished typing the current text
-        if (!isDeleting && charIndex === currentText.length) {
-            // Start deleting after a delay
-            isDeleting = true;
-            typingDelay = newTextDelay;
-        }
-        
-        // If we've finished deleting the current text
-        if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-        }
-        
-        setTimeout(typeEffect, typingDelay);
+const words = ["Full-Stack Developer", "Web Designer", "Tech Visionary"];
+let i = 0, j = 0, currentWord = "", isDeleting = false;
+
+function type() {
+  const typedText = document.getElementById("typed-text");
+  if (i < words.length) {
+    currentWord = words[i];
+
+    if (!isDeleting) {
+      typedText.textContent = currentWord.slice(0, j++);
+      if (j > currentWord.length) {
+        isDeleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+    } else {
+      typedText.textContent = currentWord.slice(0, j--);
+      if (j === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+      }
     }
-    
-    // Start the typing effect
-    typeEffect();
-});
+    setTimeout(type, isDeleting ? 30 : 50);
+  }
+}
+type();
+
 
 
 
