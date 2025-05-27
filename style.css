@@ -227,8 +227,6 @@ section {
     text-align: center;
     margin: 0 auto;
     min-height: 85vh;
-    /* position: relative; */
-    /* top: -60px; */
     max-width: 1000px;
 }
 
@@ -290,40 +288,28 @@ section {
 
 
 
-.nav-link {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1rem;
-    transition: color 0.3s;
-
-}
-
-.nav-link:hover {
-    color: #ccc;
-}
-
 .contact-btn {
+    display: inline-block;
+    text-decoration: none;
     background-color: #00ff88;
-    /* background-color: #ffffff; */
     color: #000000;
     padding: 12px 24px;
     border-radius: 30px;
     border: 2px solid #00ff88;
     font-weight: 600;
+    transition: all 0.3s;
 }
 
 .contact-btn:hover {
-    /* background-color: #00cc6a; */
-    transform: scale(2);
+    transform: scale(1.3) !important;
     color: #000;
 }
 
-.contact-me-btn {
+.download-cv-btn  {
     display: inline-block;
     background-color: transparent;
     color: #00ff88;
     border: 2px solid #00ff88;
-    /* border: 1.5px solid #ffffff; */
     padding: 12px 24px;
     border-radius: 30px;
     text-decoration: none;
@@ -331,9 +317,10 @@ section {
     transition: all 0.3s;
 }
 
-.contact-me-btn:hover {
+.download-cv-btn:hover {
     background-color: #02ff88;
     color: #000;
+    transform: scale(1.25); /* Added scale effect */
 }
 
 
@@ -527,6 +514,9 @@ section {
     transform: translateY(0);
     position: relative;
 }
+
+
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
