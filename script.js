@@ -223,3 +223,95 @@ tabs.forEach(tab => {
     document.getElementById(panelId).classList.add('active');
   });
 });
+
+
+// Voice typing functionality for contact form
+document.addEventListener('DOMContentLoaded', () => {
+    const messageInput = document.getElementById('message');
+    const voiceButton = document.getElementById('voice-btn');
+    
+    // Hide mic button when user starts typing
+    messageInput.addEventListener('input', () => {
+        if (messageInput.value.trim() !== '') {
+            voiceButton.style.display = 'none';
+        } else {
+            voiceButton.style.display = 'flex';
+        }
+    });
+    
+    // Check if browser supports speech recognition
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+        
+        let finalTranscript = '';
+        
+        recognition.onstart = () => {
+            voiceButton.classList.add('recording');
+            voiceButton.innerHTML = '<i class="fas fa-microphone-alt"></i>';
+        };
+        
+        recognition.onresult = (event) => {
+            let interimTranscript = '';
+            
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                const transcript = event.results[i][0].transcript;
+                
+                if (event.results[i].isFinal) {
+                    finalTranscript += transcript + ' ';
+                } else {
+                    interimTranscript += transcript;
+                }
+            }
+            
+            messageInput.value = finalTranscript + interimTranscript;
+            
+            // Hide mic button when there's text
+            if (messageInput.value.trim() !== '') {
+                voiceButton.style.display = 'none';
+            }
+        };
+        
+        recognition.onend = () => {
+            voiceButton.classList.remove('recording');
+            voiceButton.innerHTML = '<i class="fas fa-microphone"></i>';
+        };
+        
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error:', event.error);
+            voiceButton.classList.remove('recording');
+            voiceButton.innerHTML = '<i class="fas fa-microphone"></i>';
+        };
+        
+        let isRecording = false;
+        
+        voiceButton.addEventListener('click', () => {
+            if (isRecording) {
+                recognition.stop();
+                isRecording = false;
+            } else {
+                finalTranscript = messageInput.value || '';
+                recognition.start();
+                isRecording = true;
+            }
+        });
+        
+    } else {
+        voiceButton.style.display = 'none';
+        console.log('Speech recognition not supported in this browser');
+    }
+    
+    // Form submission handling
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Here you would typically send the form data to your server
+        alert('Form submitted! This is a demo.');
+        contactForm.reset();
+        voiceButton.style.display = 'flex';
+    });
+});
