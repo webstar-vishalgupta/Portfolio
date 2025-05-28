@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-
 </head>
 
 <body>
+
     <!-- Loader -->
     <div id="loader-wrapper">
         <svg class="pl" viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
@@ -35,12 +35,10 @@
         </svg>
     </div>
 
+    <!-- Cursor element -->
+    <div id="custom-cursor"></div>
 
-    <!-- Particles Container -->
-    <!-- <div id="particles-js"></div> -->
-
-
-    <!-- --------Bottom Navigation Bar--------------------------------------------------->
+    <!-- --------Bottom Navigation Bar---------------------------------------------------->
     <div class="nav" id="navbar">
 
 
@@ -104,452 +102,355 @@
         </nav>
     </header>
 
+    <main>
+
+        <!-- Home Section hero ----------------------------------------------------------------->
+        <section class="hero" id="home">
 
 
-    <!-- Home Section hero ----------------------------------------------------------------->
-    <section class="hero" id="home">
 
-
-
-        <div class="profile-texts">
-            <h2 class="intro-text">Hi, I am</h2>
-            <h1 class="name-text" id="name-text">VISHAL GUPTA</h1>
-            <p class="hero-subtitle"><span id="typed-text"></span><span class="cursor">|</span></p>
-        </div>
-        <div>
-            <a href="#contact" class="contact-btn">Hire Me</a>
-            <a href="#cv" class="download-cv-btn">Download CV</a>
-
-        </div>
-
-        <!-- ------------work-experience------------ -->
-        <div class="work-exp">
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number" data-count="5">0</span>
-                    <span class="stat-plus">+</span>
-                    <p class="stat-label">Experiences</p>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="20">0</span>
-                    <span class="stat-plus">+</span>
-                    <p class="stat-label">Project done</p>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="80">0</span>
-                    <span class="stat-plus">+</span>
-                    <p class="stat-label">Happy Clients</p>
-                </div>
+            <div class="profile-texts">
+                <h2 class="intro-text">Hi, I am</h2>
+                <h1 class="name-text" id="name-text">VISHAL GUPTA</h1>
+                <p class="hero-subtitle"><span id="typed-text"></span><span class="cursor">|</span></p>
             </div>
-        </div>
+            <div>
+                <a href="#contact" class="contact-btn">Hire Me</a>
+                <a href="#cv" class="download-cv-btn">Download CV</a>
 
-
-        <!-- ----------scroll indicator------------ -->
-        <div class="scroll-indicator"> <span>↓</span></div>
-
-    </section>
-
-
-
-    <!-- About Me Section -->
-    <section id="about" class="about">
-        <h2 class="section-title">ABOUT ME <span class="subtitle">DISCOVER MORE</span></h2>
-
-        <div class="about-content">
-            <div class="about-picture">
-                <img src="assets/images/developer_profile.png" alt="">
-                <div class="social-icons" style="display: flex; gap: 24px; font-size: 24px;">
-                    <a href="https://github.com/webstar-vishalgupta" target="_blank" aria-label="GitHub">
-                        <i class="fab fa-github" style="color: #fff;"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/vishal-gupta-5655a4328/" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin" style="color: #fff;"></i>
-                    </a>
-                    <a href="https://www.instagram.com/webstar_vishalgupta/" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram" style="color: #fff;"></i>
-                    </a>
-                    <a href="mailto:webstarforever@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope" style="color: #fff;"></i>
-                    </a>
-                </div>
             </div>
-            <div class="tab-container">
-                <div class="tabs">
-                    <button class="tab active" data-tab="tab1">My Journey</button>
-                    <button class="tab" data-tab="tab2">Tech Stack</button>
-                    <button class="tab" data-tab="tab3">Vision</button>
-                </div>
 
-                <div class="tab-content">
-                    <div class="tab-panel active" id="tab1">
-                        <p> My journey into tech started in school, driven by curiosity and a hunger to create. I taught
-                            myself
-                            web development through YouTube and hands-on practice, and soon realized that code wasn’t
-                            just logic
-                            — it was a way to bring ideas to life. Over time, I expanded far beyond the basics:</p>
+            <!-- ------------work-experience------------ -->
+            <div class="work-exp">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5">0</span>
+                        <span class="stat-plus">+</span>
+                        <p class="stat-label">Experiences</p>
                     </div>
-                    <div class="tab-panel" id="tab2">
-                        <p> Today, I’m a full-stack developer who also explores AI, machine learning, automation, and
-                            product
-                            design. I build intuitive web apps using technologies like React, Node.js, MongoDB, and
-                            Tailwind
-                            CSS, while
-                            also using design tools like Figma and graphic software to shape clean, user-focused
-                            interfaces.</p>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="20">0</span>
+                        <span class="stat-plus">+</span>
+                        <p class="stat-label">Project done</p>
                     </div>
-                    <div class="tab-panel" id="tab3">
-                        <p> I'm
-                            passionate about leveraging AI tools and SaaS platforms to build smarter, faster, and more
-                            scalable
-                            solutions. My long-term vision is to build a tech company that solves real problems — and
-                            every day,
-                            I’m learning, building, and moving closer to that goal.</p>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="80">0</span>
+                        <span class="stat-plus">+</span>
+                        <p class="stat-label">Happy Clients</p>
                     </div>
                 </div>
             </div>
 
-        </div>
 
+            <!-- ----------scroll indicator------------ -->
+            <div class="scroll-indicator"> <span>↓</span></div>
 
+        </section>
 
-        <!-- ----------skills section---------- -->
-        <div id="skills-sec" class="skills-sec">
-            <h2 class="section-title">My Skills <span class="subtitle">DISCOVER MORE</span></h2>
-            <div class="skills-container">
-                <div class="skill-item">
-                    <div class="skill-circle">
-                        <svg width="120" height="120" viewBox="0 0 160 160">
-                            <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
-                            <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="95"></circle>
-                        </svg>
-                        <div class="skill-percent">
-                            <span class="skill-percent-number" data-count="95">0</span>
-                            <span>%</span>
+        <!-- About Me Section ------------------------------------------------------------------->
+        <section id="about" class="about">
+            <h2 class="section-title">ABOUT ME <span class="subtitle">DISCOVER MORE</span></h2>
+
+            <div class="about-content">
+                <div class="about-picture">
+                    <img src="assets/images/developer_profile.png" alt="">
+                    <div class="social-icons" style="display: flex; gap: 24px; font-size: 24px;">
+                        <a href="https://github.com/webstar-vishalgupta" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github" style="color: #fff;"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/vishal-gupta-5655a4328/" target="_blank"
+                            aria-label="LinkedIn">
+                            <i class="fab fa-linkedin" style="color: #fff;"></i>
+                        </a>
+                        <a href="https://www.instagram.com/webstar_vishalgupta/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram" style="color: #fff;"></i>
+                        </a>
+                        <a href="mailto:webstarforever@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope" style="color: #fff;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="tab-container">
+                    <div class="tabs">
+                        <button class="tab active" data-tab="tab1">My Journey</button>
+                        <button class="tab" data-tab="tab2">Tech Stack</button>
+                        <button class="tab" data-tab="tab3">Vision</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab1">
+                            <p> My journey into tech started in school, driven by curiosity and a hunger to create. I
+                                taught myself web development through YouTube and hands-on practice, and soon realized that code
+                                wasn’t just logic — it was a way to bring ideas to life. Over time, I expanded far beyond the basics:</p>
+                        </div>
+                        <div class="tab-panel" id="tab2">
+                            <p> Today, I’m a full-stack developer who also explores AI, machine learning, automation,
+                                and product design. I build intuitive web apps using technologies like React, Node.js, MongoDB, and
+                                Tailwind CSS, while also using design tools like Figma and graphic software to shape clean, user-focused
+                                interfaces.</p>
+                        </div>
+                        <div class="tab-panel" id="tab3">
+                            <p> I'm passionate about leveraging AI tools and SaaS platforms to build smarter, faster, and
+                                more scalable solutions. My long-term vision is to build a tech company that solves real problems —
+                                and every day,I’m learning, building, and moving closer to that goal.</p>
                         </div>
                     </div>
-                    <p class="skill-name">HTML5</p>
                 </div>
 
-                <div class="skill-item">
-                    <div class="skill-circle">
-                        <svg width="120" height="120" viewBox="0 0 160 160">
-                            <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
-                            <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="85"></circle>
-                        </svg>
-                        <div class="skill-percent">
-                            <span class="skill-percent-number" data-count="85">0</span>
-                            <span>%</span>
+            </div>
+
+
+
+            <!-- ----------skills section---------- -->
+            <div id="skills-sec" class="skills-sec">
+                <h2 class="section-title">My Skills <span class="subtitle">DISCOVER MORE</span></h2>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 160 160">
+                                <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
+                                <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="95"></circle>
+                            </svg>
+                            <div class="skill-percent">
+                                <span class="skill-percent-number" data-count="95">0</span>
+                                <span>%</span>
+                            </div>
                         </div>
+                        <p class="skill-name">HTML5</p>
                     </div>
-                    <p class="skill-name">CSS3</p>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-circle">
-                        <svg width="120" height="120" viewBox="0 0 160 160">
-                            <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
-                            <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="80"></circle>
-                        </svg>
-                        <div class="skill-percent">
-                            <span class="skill-percent-number" data-count="80">0</span>
-                            <span>%</span>
+                    <div class="skill-item">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 160 160">
+                                <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
+                                <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="85"></circle>
+                            </svg>
+                            <div class="skill-percent">
+                                <span class="skill-percent-number" data-count="85">0</span>
+                                <span>%</span>
+                            </div>
                         </div>
+                        <p class="skill-name">CSS3</p>
                     </div>
-                    <p class="skill-name">JavaScript</p>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-circle">
-                        <svg width="120" height="120" viewBox="0 0 160 160">
-                            <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
-                            <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="70"></circle>
-                        </svg>
-                        <div class="skill-percent">
-                            <span class="skill-percent-number" data-count="70">0</span>
-                            <span>%</span>
+                    <div class="skill-item">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 160 160">
+                                <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
+                                <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="80"></circle>
+                            </svg>
+                            <div class="skill-percent">
+                                <span class="skill-percent-number" data-count="80">0</span>
+                                <span>%</span>
+                            </div>
                         </div>
+                        <p class="skill-name">JavaScript</p>
                     </div>
-                    <p class="skill-name">ReactJS</p>
-                </div>
-            </div>
 
-            <div class="skills-container">
-                <div class="skill-item">
-                    <div class="skill-circle">
-                        <svg width="120" height="120" viewBox="0 0 160 160">
-                            <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
-                            <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="70"></circle>
-                        </svg>
-                        <div class="skill-percent">
-                            <span class="skill-percent-number" data-count="70">0</span>
-                            <span>%</span>
+                    <div class="skill-item">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 160 160">
+                                <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
+                                <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="70"></circle>
+                            </svg>
+                            <div class="skill-percent">
+                                <span class="skill-percent-number" data-count="70">0</span>
+                                <span>%</span>
+                            </div>
                         </div>
+                        <p class="skill-name">ReactJS</p>
                     </div>
-                    <p class="skill-name">Node.js</p>
                 </div>
 
-                <div class="skill-item">
-                    <div class="skill-circle">
-                        <svg width="120" height="120" viewBox="0 0 160 160">
-                            <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
-                            <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="90"></circle>
-                        </svg>
-                        <div class="skill-percent">
-                            <span class="skill-percent-number" data-count="90">0</span>
-                            <span>%</span>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 160 160">
+                                <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
+                                <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="70"></circle>
+                            </svg>
+                            <div class="skill-percent">
+                                <span class="skill-percent-number" data-count="70">0</span>
+                                <span>%</span>
+                            </div>
                         </div>
+                        <p class="skill-name">Node.js</p>
                     </div>
-                    <p class="skill-name">SQL</p>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-circle">
-                        <svg width="120" height="120" viewBox="0 0 160 160">
-                            <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
-                            <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="50"></circle>
-                        </svg>
-                        <div class="skill-percent">
-                            <span class="skill-percent-number" data-count="50">0</span>
-                            <span>%</span>
+                    <div class="skill-item">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 160 160">
+                                <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
+                                <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="90"></circle>
+                            </svg>
+                            <div class="skill-percent">
+                                <span class="skill-percent-number" data-count="90">0</span>
+                                <span>%</span>
+                            </div>
                         </div>
+                        <p class="skill-name">SQL</p>
                     </div>
-                    <p class="skill-name">MongoDB</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <h2 class="section-title">PROJECTS <span class="subtitle">EXPLORE NOW</span></h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="project-logo">
-                    <img src="assets/images/adventurer.png" alt="WebRR Logo">
-                </div>
-                <div class="project-info">
-                    <h3>WebRR</h3>
-                    <p>A cloud-based SaaS HR solution for SMEs</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-logo">
-                    <img src="assets/images/stalker.png" alt="Hedcoe Logo">
-                </div>
-                <div class="project-info">
-                    <h3>Hedcoe</h3>
-                    <p>A cloud-based SaaS HR solution for SMEs</p>
+                    <div class="skill-item">
+                        <div class="skill-circle">
+                            <svg width="120" height="120" viewBox="0 0 160 160">
+                                <circle class="skill-circle-bg" cx="80" cy="80" r="70"></circle>
+                                <circle class="skill-circle-progress" cx="80" cy="80" r="70" data-percent="50"></circle>
+                            </svg>
+                            <div class="skill-percent">
+                                <span class="skill-percent-number" data-count="50">0</span>
+                                <span>%</span>
+                            </div>
+                        </div>
+                        <p class="skill-name">MongoDB</p>
+                    </div>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-logo">
-                    <img src="assets/images/recruiter.png" alt="Verge Systems Logo">
-                </div>
-                <div class="project-info">
-                    <h3>Verge Systems</h3>
-                    <p>A cloud-based SaaS HR solution for SMEs</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-logo">
-                    <img src="assets/images/dev.png" alt="Payassis Logo">
-                </div>
-                <div class="project-info">
-                    <h3>Payassis</h3>
-                    <p>A cloud-based SaaS HR solution for SMEs</p>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <!-- Experience Section -->
-        <h2 class="section-title">EXPERIENCE <span class="subtitle">EXPLORE NOW</span></h2>
-        <div class="experience-item">
-            <div class="experience-header">
-                <h3>WebRR / Software Engineer</h3>
-                <span class="experience-date">MAY 2022 - PRESENT • INTERNSHIP</span>
+        <!-- Projects Section --------------------------------------------------------------------->
+        <section class="projects" id="projects">
+            <h2 class="section-title">PROJECTS <span class="subtitle">EXPLORE NOW</span></h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-logo">
+                        <img src="assets/images/adventurer.png" alt="WebRR Logo">
+                    </div>
+                    <div class="project-info">
+                        <h3>WebRR</h3>
+                        <p>A cloud-based SaaS HR solution for SMEs</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-logo">
+                        <img src="assets/images/stalker.png" alt="Hedcoe Logo">
+                    </div>
+                    <div class="project-info">
+                        <h3>Hedcoe</h3>
+                        <p>A cloud-based SaaS HR solution for SMEs</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-logo">
+                        <img src="assets/images/recruiter.png" alt="Verge Systems Logo">
+                    </div>
+                    <div class="project-info">
+                        <h3>Verge Systems</h3>
+                        <p>A cloud-based SaaS HR solution for SMEs</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-logo">
+                        <img src="assets/images/dev.png" alt="Payassis Logo">
+                    </div>
+                    <div class="project-info">
+                        <h3>Payassis</h3>
+                        <p>A cloud-based SaaS HR solution for SMEs</p>
+                    </div>
+                </div>
             </div>
-            <p class="experience-description">
-                Currently, I am working at WebRR (mobile application), WebRR is a Cloud based SaaS HR Solutions for
-                SMEs. I've been in discussion with 1-2 years of experience in building mobile applications for
-                creating solutions for businesses of all sizes across the industry.
-            </p>
-            <p class="experience-description">
-                As a developer, I've been tasked with creating mobile applications which are built on React Native,
-                I've also worked on web applications built on React.js and got a sound understanding of
-                collaborative software development and state management, which will help me stand in the wider tech
-                industry.
-            </p>
-            <div class="skills">
-                <span class="skill-tag">React Native</span>
-                <span class="skill-tag">React.js</span>
-                <span class="skill-tag">JavaScript</span>
+
+            <!-- Experience Section -->
+            <h2 class="section-title">EXPERIENCE <span class="subtitle">EXPLORE NOW</span></h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>WebRR / Software Engineer</h3>
+                    <span class="experience-date">MAY 2022 - PRESENT • INTERNSHIP</span>
+                </div>
+                <p class="experience-description">
+                    Currently, I am working at WebRR (mobile application), WebRR is a Cloud based SaaS HR Solutions for
+                    SMEs. I've been in discussion with 1-2 years of experience in building mobile applications for
+                    creating solutions for businesses of all sizes across the industry.
+                </p>
+                <p class="experience-description">
+                    As a developer, I've been tasked with creating mobile applications which are built on React Native,
+                    I've also worked on web applications built on React.js and got a sound understanding of
+                    collaborative software development and state management, which will help me stand in the wider tech
+                    industry.
+                </p>
+                <div class="skills">
+                    <span class="skill-tag">React Native</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!--Contact Section------------------------------------------------------------------------->
 
+        <section class="contact" id="contact">
+            <h2 class="section-title">LET'S WORK <span class="subtitle">TOGETHER</span></h2>
+            <h3 class="contact-subtitle">Contact to the Codeverse</h3>
 
-    <section class="contact" id="contact">
-        <h2 class="section-title">LET'S WORK <span class="subtitle">TOGETHER</span></h2>
-        <h3 class="contact-subtitle">Contact to the Codeverse</h3>
-
-        <div class="contact-form-container">
-            <form class="contact-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">👤Identity Tag</label>
-                        <input type="text" id="name" placeholder="Captain vishal_gupta" required>
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">👤Identity Tag</label>
+                            <input type="text" id="name" placeholder="Captain vishal_gupta" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">📡 Uplink Address (Email)</label>
+                            <input type="email" id="email" placeholder="transmit@universe.net" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">📡 Uplink Address (Email)</label>
-                        <input type="email" id="email" placeholder="transmit@universe.net" required>
+                        <label for="budget">🪙 Credit Allocation (INR)</label>
+                        <select id="budget">
+                            <option value="" disabled selected>Select... (Optional)</option>
+                            <option value="small">₹5,000 – ₹10,000 → Low Orbit Package</option>
+                            <option value="medium">₹10,001 – ₹25,000 → Geosynchronous Tier</option>
+                            <option value="large">₹25,001 – ₹50,000 → Interstellar Support</option>
+                            <option value="large">₹50,001 – ₹1,00,000 → Warp-Speed Initiative</option>
+                            <option value="large">₹1,00,000+ → Galactic Enterprise Mission</option>
+                            <option value="large">🛸 Undisclosed Mission Funds — Let’s discuss the budget later</option>
+                        </select>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="budget">🪙 Credit Allocation (INR)</label>
-                    <select id="budget">
-                        <option value="" disabled selected>Select... (Optional)</option>
-                        <option value="small">₹5,000 – ₹10,000 → Low Orbit Package</option>
-                        <option value="medium">₹10,001 – ₹25,000 → Geosynchronous Tier</option>
-                        <option value="large">₹25,001 – ₹50,000 → Interstellar Support</option>
-                        <option value="large">₹50,001 – ₹1,00,000 → Warp-Speed Initiative</option>
-                        <option value="large">₹1,00,000+ → Galactic Enterprise Mission</option>
-                        <option value="large">🛸 Undisclosed Mission Funds — Let’s discuss the budget later</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">💬 Message Transmission</label>
-                    <div class="message-container">
-                        <textarea id="message" placeholder=":: Initiate secure transmission..." required></textarea>
-                        <button type="button" id="voice-btn" class="voice-btn">
-                            <i class="fas fa-microphone"></i>
-                        </button>
+                    <div class="form-group">
+                        <label for="message">💬 Message Transmission</label>
+                        <div class="message-container">
+                            <textarea id="message" placeholder=":: Initiate secure transmission..." required></textarea>
+                            <button type="button" id="voice-btn" class="voice-btn">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="submit-btn">🚀 TRANSMIT</button>
-            </form>
-        </div>
-    </section>
+                    <button type="submit" class="submit-btn">🚀 TRANSMIT MESSAGE</button>
+                </form>
+            </div>
+        </section>
 
+        <!-- Footer Section -->
+        <footer>
+            <div class="social-links">
+                <a href="https://github.com/webstar-vishalgupta" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="mailto:webstarforever@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/vishal-gupta-5655a4328/" class="social-icon"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/webstar_vishalgupta/" class="social-icon"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
 
+            <p class="copyright">
+                🛠️ Assembled with patience, ☕ caffeine & zero gravity. © 2023–2025 | Hand-coded in our lab 🧑‍💻. Bugs
+                monitored via satellite 🛰️. All rights reserved.😍
+            </p>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/webstar-vishalgupta" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="mailto:webstarforever@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/vishal-gupta-5655a4328/" class="social-icon"><i
-                    class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/webstar_vishalgupta/" class="social-icon"><i
-                    class="fab fa-instagram"></i></a>
-        </div>
-
-        <p class="copyright">
-            🛠️ Assembled with patience, ☕ caffeine & zero gravity. © 2023–2025 | Hand-coded in our lab 🧑‍💻. Bugs
-            monitored via satellite 🛰️. All rights reserved.😍
-        </p>
-
-        <!-- <div class="visitor-count">
+            <!-- <div class="visitor-count">
             <span>Visitors:</span>
             <a href='http://www.freevisitorcounters.com'>www.freevisitorcounters</a>
             <script type='text/javascript'
                 src='https://www.freevisitorcounters.com/auth.php?id=e96e5f938498336c6d74fcd872b4feb8dc429996'></script>
             <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1345500/t/5"></script>
         </div> -->
-        
-    </footer>
 
+        </footer>
 
-
-    <script src="script.js"></script>
-    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#ffffff" },
-                shape: {
-                    type: "circle",
-                    stroke: { width: 0, color: "#000000" },
-                    polygon: { nb_sides: 5 },
-                    image: { src: "img/github.svg", width: 100, height: 100 }
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false,
-                    anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#ffffff",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 6,
-                    direction: "none",
-                    random: false,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false,
-                    attract: { enable: false, rotateX: 600, rotateY: 1200 }
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 400, line_linked: { opacity: 1 } },
-                    bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-                    repulse: { distance: 200, duration: 0.4 },
-                    push: { particles_nb: 4 },
-                    remove: { particles_nb: 2 }
-                }
-            },
-            retina_detect: true
-        });
-        var count_particles, stats, update;
-        stats = new Stats();
-        stats.setMode(0);
-        stats.domElement.style.position = "absolute";
-        stats.domElement.style.left = "0px";
-        stats.domElement.style.top = "0px";
-        document.body.appendChild(stats.domElement);
-        count_particles = document.querySelector(".js-count-particles");
-        update = function () {
-            stats.begin();
-            stats.end();
-            if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-                count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-            }
-            requestAnimationFrame(update);
-        };
-        requestAnimationFrame(update);
-
-    </script>
-
-    <!-- <script src="testing.js"></script> -->
-
-
-
-
-
-
-
-
-
+    </main>
 </body>
+<script src="script.js"></script>
+<script src="cursor.js"></script>
+
+
 
 </html>
