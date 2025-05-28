@@ -1,8 +1,3 @@
-
-
-
-
-
 // Loader script
 window.addEventListener('load', function () {
   const loaderWrapper = document.getElementById('loader-wrapper');
@@ -15,7 +10,7 @@ window.addEventListener('load', function () {
 
 
 
-// Function to animate number counting
+// Function to animate number counting -----------------------------------------------------------------------------------------------
 function animateCounter(element, target, duration) {
   let start = 0;
   const increment = target > 0 ? 1 : 0;
@@ -31,7 +26,7 @@ function animateCounter(element, target, duration) {
   }, stepTime);
 }
 
-// Function to animate circular progress
+// Function to animate circular progress -----------------------------------------------------------------------------------------------
 function animateCircleProgress(circle, percent) {
   const radius = circle.getAttribute('r');
   const circumference = 2 * Math.PI * radius;
@@ -49,7 +44,7 @@ function animateCircleProgress(circle, percent) {
   }, 100);
 }
 
-// Function to check if element is in viewport
+// Function to check if element is in viewport -------------------------------------------------------------------------------------------
 function isInViewport(element) {
   const rect = element.getBoundingClientRect();
   return (
@@ -87,17 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-// typewriter effect
+// typewriter effect -------------------------------------------------------------------------------------------------------
 const words = ["Full-Stack Developer", "Web Designer", "Tech Visionary"];
 let i = 0, j = 0, currentWord = "", isDeleting = false;
 
@@ -131,7 +116,7 @@ type();
 
 
 
-// -------------Bottom nav Bar -----------------------
+// -------------Bottom nav Bar -------------------------------------------------------------------
 const navItems = document.querySelectorAll('.nav-item');
 const sections = document.querySelectorAll('section');
 
@@ -162,16 +147,7 @@ navItems.forEach(item => {
 
 
 
-
-
-
-
-
-
-
-
-
-// Counting animation for weork exprience
+// Counting animation for weork exprience ------------------------------------------------------------------------------------------------------------
 function countUp(element) {
   const target = parseInt(element.getAttribute('data-count'));
   let count = 0;
@@ -207,7 +183,7 @@ observer.observe(document.querySelector('.stats-container'));
 
 
 
-// About me tabs Paragraphs
+// About me tabs Paragraphs-------------------------------------------------------------------------------------------------------------------------------------------
 const tabs = document.querySelectorAll('.tab');
 const panels = document.querySelectorAll('.tab-panel');
 
@@ -225,7 +201,7 @@ tabs.forEach(tab => {
 });
 
 
-// Voice typing functionality for contact form
+// Voice typing functionality for contact form 
 document.addEventListener('DOMContentLoaded', () => {
     const messageInput = document.getElementById('message');
     const voiceButton = document.getElementById('voice-btn');
