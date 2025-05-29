@@ -1020,6 +1020,10 @@ footer {
 
 
 @media (max-width: 768px) {
+
+    #custom-cursor{
+        display: none;
+    }
     .name-text {
         font-size: 4rem;
         letter-spacing: 0rem;
