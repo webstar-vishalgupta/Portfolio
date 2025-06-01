@@ -19,7 +19,7 @@
     color: #ffffff;
     font-family: "JetBrains Mono", monospace;
     cursor: none !important;
-    /* cursor: url('assets/images/my-cursor.png') 4 4, auto !important; */
+
 }
 
 
@@ -30,7 +30,7 @@
     left: 0;
     width: 32px;
     height: 32px;
-    background: url('assets/images/my-cursor.png') no-repeat center center;
+    background: url('/assets/images/my-cursor.png') no-repeat center center;
     background-size: contain;
     pointer-events: none;
     z-index: 9999;
