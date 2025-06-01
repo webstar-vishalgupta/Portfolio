@@ -68,7 +68,7 @@
 }
 
 .nav .nav-item:hover {
-    transform: scale(1.5) translateY(-20px);
+    transform: scale(1.7);
     background: rgba(255, 255, 255, 0.5);
 }
 
