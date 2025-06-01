@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/images/dev_icon.png" type="image/x-icon">
+    <title>My 2025 Stack as a Frontend Developer - Vishal Gupta</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/loader.css">
+    <link rel="stylesheet" href="../style/main.css">
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <style>
+        /* Blog Post Specific Styles */
+        .blog-post-page {
+            min-height: 100vh;
+            padding-top: 100px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 100px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-to-blog:hover {
+            background-color: rgba(0, 255, 136, 0.2);
+            color: var(--theme-color);
+        }
+
+        .blog-post-header {
+            margin-bottom: 40px;
+        }
+
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #888;
+            flex-wrap: wrap;
+        }
+
+        .blog-post-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-post-read-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-post-title {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .blog-post-excerpt {
+            color: #aaa;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .blog-post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .blog-post-tag {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--theme-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: 1px solid var(--theme-color);
+        }
+
+        .blog-post-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .blog-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-post-content {
+            color: #ddd;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .blog-post-content h2 {
+            color: var(--theme-color);
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            font-weight: 600;
+        }
+
+        .blog-post-content h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .blog-post-content p {
+            margin-bottom: 20px;
+        }
+
+        .blog-post-content ul,
+        .blog-post-content ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .blog-post-content li {
+            margin-bottom: 10px;
+        }
+
+        .blog-post-content code {
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--theme-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .blog-post-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 3px solid var(--theme-color);
+        }
+
+        .blog-post-content pre code {
+            background: transparent;
+            padding: 0;
+        }
+
+        .blog-post-content blockquote {
+            border-left: 3px solid var(--theme-color);
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #bbb;
+        }
+
+        .tool-section {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--theme-color);
+            font-size: 20px;
+        }
+
+        .tool-name {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .tool-description {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-post-page {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .blog-post-title {
+                font-size: 2rem;
+            }
+
+            .blog-post-image {
+                height: 250px;
+            }
+
+            .blog-post-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="loader-wrapper">
+        <svg class="pl" viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="pl-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="hsl(193,90%,55%)" />
+                    <stop offset="100%" stop-color="hsl(223,90%,55%)" />
+                </linearGradient>
+            </defs>
+            <circle class="pl__ring" r="56" cx="64" cy="64" fill="none" stroke="hsla(0,10%,10%,0.1)" stroke-width="16"
+                stroke-linecap="round" />
+            <path class="pl__worm"
+                d="M92,15.492S78.194,4.967,66.743,16.887c-17.231,17.938-28.26,96.974-28.26,96.974L119.85,59.892l-99-31.588,57.528,89.832L97.8,19.349,13.636,88.51l89.012,16.015S81.908,38.332,66.1,22.337C50.114,6.156,36,15.492,36,15.492a56,56,0,1,0,56,0Z"
+                fill="none" stroke="url(#pl-grad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"
+                stroke-dasharray="44 1111" stroke-dashoffset="10" />
+        </svg>
+    </div>
+
+    <!-- Cursor element -->
+    <div id="custom-cursor"></div>
+
+    <!-- Header Navigation Bar -->
+    <header>
+        <nav>
+            <img src="../assets/images/main-logo.png" alt="Not found" class="logo-img">
+            <div class="indian">
+                <img src="../assets/images/flag.png" alt="flag">
+                <span>Indian</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <article class="blog-post-page">
+            <a href="../blog.html" class="back-to-blog">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+
+            <div class="blog-post-header">
+                <div class="blog-post-meta">
+                    <div class="blog-post-date">
+                        <i class="fas fa-calendar"></i>
+                        March 19, 2025
+                    </div>
+                    <div class="blog-post-read-time">
+                        <i class="fas fa-clock"></i>
+                        4 min read
+                    </div>
+                </div>
+                
+                <h1 class="blog-post-title">My 2025 Stack as a Frontend Developer</h1>
+                
+                <p class="blog-post-excerpt">
+                    As a Frontend Developer in 2025, I've fine-tuned my development environment with a set of powerful tools that enhance productivity, efficiency, and customization. Let me walk you through my stack and how these tools help me build better, faster, and more maintainable projects!
+                </p>
+                
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">frontend</span>
+                    <span class="blog-post-tag">2025</span>
+                    <span class="blog-post-tag">productivity</span>
+                </div>
+            </div>
+
+            <div class="blog-post-image">
+                <img src="../assets/images/blog-img-1.jpg" alt="My 2025 Stack as a Frontend Developer">
+            </div>
+
+            <div class="blog-post-content">
+                <p>
+                    The frontend development landscape has evolved dramatically over the past few years, and 2025 has brought us some incredible tools that have revolutionized how we build web applications. After years of experimenting with different technologies and workflows, I've settled on a stack that maximizes productivity while maintaining code quality and developer experience.
+                </p>
+
+                <h2>🚀 Core Development Tools</h2>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <div class="tool-name">React 18 with Next.js 14</div>
+                    </div>
+                    <div class="tool-description">
+                        React remains my go-to library for building user interfaces, and Next.js 14 has taken it to the next level with its App Router, Server Components, and incredible performance optimizations. The developer experience is unmatched, and the built-in features like image optimization and automatic code splitting make it a no-brainer for most projects.
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <div class="tool-name">TypeScript</div>
+                    </div>
+                    <div class="tool-description">
+                        TypeScript has become essential in my workflow. The type safety, better IDE support, and improved refactoring capabilities have saved me countless hours of debugging. In 2025, I can't imagine building a serious application without it.
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="tool-name">Tailwind CSS</div>
+                    </div>
+                    <div class="tool-description">
+                        Tailwind CSS has completely transformed how I approach styling. The utility-first approach allows for rapid prototyping and consistent design systems. With the new features in Tailwind CSS v4, including better performance and enhanced customization options, it's become even more powerful.
+                    </div>
+                </div>
+
+                <h2>🛠️ Development Environment</h2>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="tool-name">VS Code with Extensions</div>
+                    </div>
+                    <div class="tool-description">
+                        Visual Studio Code remains my editor of choice, enhanced with carefully selected extensions:
+                        <ul>
+                            <li><strong>Prettier</strong> - Automatic code formatting</li>
+                            <li><strong>ESLint</strong> - Code quality and consistency</li>
+                            <li><strong>Tailwind CSS IntelliSense</strong> - Autocomplete for Tailwind classes</li>
+                            <li><strong>Auto Rename Tag</strong> - Automatically rename paired HTML/JSX tags</li>
+                            <li><strong>GitLens</strong> - Enhanced Git capabilities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="tool-name">Warp Terminal</div>
+                    </div>
+                    <div class="tool-description">
+                        Warp has revolutionized my terminal experience with its modern interface, AI-powered command suggestions, and excellent performance. The ability to collaborate in the terminal and the built-in workflows have significantly improved my productivity.
+                    </div>
+                </div>
+
+                <h2>⚡ Build Tools & Package Management</h2>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="tool-name">Vite</div>
+                    </div>
+                    <div class="tool-description">
+                        For projects that don't require Next.js, Vite has become my build tool of choice. The lightning-fast hot module replacement and optimized production builds make development a joy. The plugin ecosystem is robust and the configuration is minimal.
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="tool-name">pnpm</div>
+                    </div>
+                    <div class="tool-description">
+                        I've switched from npm to pnpm for package management. It's faster, more efficient with disk space, and has better monorepo support. The strict dependency resolution also helps catch potential issues early.
+                    </div>
+                </div>
+
+                <h2>🎨 Design & Prototyping</h2>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="tool-name">Figma</div>
+                    </div>
+                    <div class="tool-description">
+                        Figma continues to be the gold standard for design collaboration. The new features like variables and advanced prototyping have made the design-to-development handoff smoother than ever.
+                    </div>
+                </div>
+
+                <h2>🔧 Testing & Quality Assurance</h2>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <div class="tool-name">Vitest & Testing Library</div>
+                    </div>
+                    <div class="tool-description">
+                        Vitest has become my testing framework of choice, especially when working with Vite. Combined with React Testing Library for component testing, it provides a comprehensive testing solution that's fast and reliable.
+                    </div>
+                </div>
+
+                <h2>📊 Performance & Analytics</h2>
+
+                <div class="tool-section">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="tool-name">Vercel Analytics</div>
+                    </div>
+                    <div class="tool-description">
+                        For deployment and analytics, Vercel provides an excellent platform with built-in performance monitoring, real user metrics, and seamless integration with Next.js applications.
+                    </div>
+                </div>
+
+                <h2>🎯 Why This Stack Works</h2>
+
+                <p>
+                    This stack has been carefully curated based on real-world experience and the evolving needs of modern web development. Here's why it works so well:
+                </p>
+
+                <ul>
+                    <li><strong>Developer Experience:</strong> Every tool in this stack prioritizes developer happiness and productivity</li>
+                    <li><strong>Performance:</strong> From build times to runtime performance, these tools are optimized for speed</li>
+                    <li><strong>Scalability:</strong> The stack scales well from small projects to large enterprise applications</li>
+                    <li><strong>Community Support:</strong> All tools have strong communities and excellent documentation</li>
+                    <li><strong>Future-Proof:</strong> These technologies are actively maintained and evolving</li>
+                </ul>
+
+                <h2>🔮 Looking Ahead</h2>
+
+                <p>
+                    As we move through 2025, I'm keeping an eye on emerging technologies like:
+                </p>
+
+                <ul>
+                    <li><strong>Bun:</strong> The all-in-one JavaScript runtime that could replace Node.js</li>
+                    <li><strong>Astro:</strong> For content-heavy sites that need optimal performance</li>
+                    <li><strong>Tauri:</strong> For building desktop applications with web technologies</li>
+                    <li><strong>WebAssembly:</strong> For performance-critical applications</li>
+                </ul>
+
+                <p>
+                    The frontend landscape continues to evolve rapidly, and staying adaptable while maintaining a solid foundation is key to long-term success. This stack provides that foundation while keeping me ready for whatever comes next.
+                </p>
+
+                <blockquote>
+                    "The best stack is the one that helps you ship great products efficiently while maintaining your sanity as a developer."
+                </blockquote>
+
+                <p>
+                    What's your current frontend stack? I'd love to hear about the tools that are working well for you in 2025. Feel free to reach out and share your experiences!
+                </p>
+            </div>
+        </article>
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="social-links">
+                <a href="https://github.com/webstar-vishalgupta" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="mailto:webstarforever@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/vishal-gupta-5655a4328/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/webstar_vishalgupta/" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <p class="copyright">
+                🛠️ Assembled with patience, ☕ caffeine & zero gravity. © 2023–2025 | Hand-coded in our lab 🧑‍💻. Bugs monitored via satellite 🛰️. All rights reserved.😍
+            </p>
+        </footer>
+    </main>
+
+    <script src="../script/script.js"></script>
+    <script src="../script/cursor.js"></script>
+</body>
+
+</html>

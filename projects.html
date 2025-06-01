@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets\images\dev_icon.png" type="image/x-icon">
+    <title>Vishal Gupta - Projects</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/loader.css">
+    <link rel="stylesheet" href="style/main.css">
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <style>
+        /* Projects Page Specific Styles */
+        .projects-page {
+            min-height: 100vh;
+            padding-top: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 100px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card-detailed {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            /* border-left: 3px solid var(--theme-color); */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card-detailed:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card-detailed:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--theme-color);
+        }
+
+        .project-description {
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background-color: rgba(0, 255, 136, 0.15);
+            color: var(--theme-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-tag:hover {
+            background-color: rgba(0, 255, 136, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .project-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--theme-color);
+            transition: width 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--theme-color);
+        }
+
+        .project-link:hover:after {
+            width: 100%;
+        }
+
+        .project-link i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 40px;
+        }
+
+        .back-to-home:hover {
+            background-color: rgba(0, 255, 136, 0.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <div id="loader-wrapper">
+        <svg class="pl" viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="pl-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="hsl(193,90%,55%)" />
+                    <stop offset="100%" stop-color="hsl(223,90%,55%)" />
+                </linearGradient>
+            </defs>
+            <circle class="pl__ring" r="56" cx="64" cy="64" fill="none" stroke="hsla(0,10%,10%,0.1)" stroke-width="16"
+                stroke-linecap="round" />
+            <path class="pl__worm"
+                d="M92,15.492S78.194,4.967,66.743,16.887c-17.231,17.938-28.26,96.974-28.26,96.974L119.85,59.892l-99-31.588,57.528,89.832L97.8,19.349,13.636,88.51l89.012,16.015S81.908,38.332,66.1,22.337C50.114,6.156,36,15.492,36,15.492a56,56,0,1,0,56,0Z"
+                fill="none" stroke="url(#pl-grad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"
+                stroke-dasharray="44 1111" stroke-dashoffset="10" />
+        </svg>
+    </div>
+
+    <!-- Cursor element -->
+    <div id="custom-cursor"></div>
+
+    <!-- Header Navigation Bar -->
+    <header>
+        <nav>
+            <img src="assets/images/main-logo.png" alt="Not found" class="logo-img">
+            <div class="indian">
+                <img src="assets/images/flag.png" alt="flag">
+                <span>Indian</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Projects Page Content -->
+        <section class="projects-page">
+            <h2 class="section-title">ALL PROJECTS <span class="subtitle">EXPLORE MY WORK</span></h2>
+
+            <a href="portfolio.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card-detailed">
+                    <div class="project-image">
+                        <img src="assets/images/adventurer.png" alt="WebRR Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">WebRR</h3>
+                        <p class="project-description">A cloud-based SaaS HR solution for SMEs with comprehensive employee management, payroll processing, and performance tracking features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Express</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-globe"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card-detailed">
+                    <div class="project-image">
+                        <img src="assets/images/stalker.png" alt="Hedcoe Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hedcoe</h3>
+                        <p class="project-description">An educational platform that connects students with mentors, featuring interactive learning modules and real-time progress tracking.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-globe"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card-detailed">
+                    <div class="project-image">
+                        <img src="assets/images/recruiter.png" alt="Verge Systems Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Verge Systems</h3>
+                        <p class="project-description">A comprehensive business management system with modules for inventory, customer relationship management, and financial reporting.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Redux</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-globe"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card-detailed">
+                    <div class="project-image">
+                        <img src="assets/images/dev.png" alt="Payassis Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Payassis</h3>
+                        <p class="project-description">A secure payment processing platform with multi-currency support, fraud detection, and detailed transaction analytics.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Stripe API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-globe"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card-detailed">
+                    <div class="project-image">
+                        <img src="assets/images/developer.jpeg" alt="Portfolio Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <p class="project-description">A personal portfolio website with a unique Netflix-inspired intro, custom cursor effects, and responsive design for showcasing projects and skills.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-globe"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card-detailed">
+                    <div class="project-image">
+                        <img src="assets/images/bg-patetrn.png" alt="AI Chat Assistant">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Chat Assistant</h3>
+                        <p class="project-description">An intelligent chatbot powered by machine learning that provides customer support, answers queries, and helps users navigate websites.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">React</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-globe"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="portfolio.html" class="back-to-home" style="margin-top: 40px;">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="social-links">
+                <a href="https://github.com/webstar-vishalgupta" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="mailto:webstarforever@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/vishal-gupta-5655a4328/" class="social-icon"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/webstar_vishalgupta/" class="social-icon"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+
+            <p class="copyright">
+                🛠️ Assembled with patience, ☕ caffeine & zero gravity. © 2023–2025 | Hand-coded in our lab 🧑‍💻. Bugs
+                monitored via satellite 🛰️. All rights reserved.😍
+            </p>
+        </footer>
+    </main>
+</body>
+<script src="script/script.js"></script>
+<script src="script/cursor.js"></script>
+
+</html>

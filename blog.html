@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets\images\dev_icon.png" type="image/x-icon">
+    <title>Vishal Gupta - Blog</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style/loader.css">
+    <link rel="stylesheet" href="style/main.css">
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <style>
+        /* Blog Page Specific Styles */
+        body {
+            background-color: #0a0a0a;
+        }
+        
+        .blog-page {
+            min-height: 100vh;
+            padding-top: 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .blog-title-section h1 {
+            font-size: 2.2rem;
+            color: #eee;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .blog-subtitle {
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .sort-dropdown {
+            position: relative;
+        }
+
+        .sort-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ddd;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .sort-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .sort-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(25, 25, 25, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            min-width: 200px;
+            z-index: 1000;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .sort-options.active {
+            display: block;
+        }
+
+        .sort-option {
+            padding: 10px 14px;
+            color: #ddd;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease;
+            font-size: 13px;
+        }
+
+        .sort-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .sort-option.active {
+            background: rgba(0, 255, 136, 0.15);
+            color: var(--theme-color);
+        }
+
+        .topics-section {
+            margin-bottom: 30px;
+        }
+
+        .topics-title {
+            color: #eee;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .topics-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .topic-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+        }
+
+        .topic-tag:hover,
+        .topic-tag.active {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            border-color: rgba(0, 255, 136, 0.4);
+            transform: translateY(-1px);
+        }
+        
+        .topics-dropdown-btn {
+            display: none;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ddd;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .topics-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .topics-dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(25, 25, 25, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            min-width: 200px;
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+            padding: 8px;
+            right: 0;
+        }
+
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .blog-post {
+            background: rgba(15, 15, 15, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(30, 30, 30, 0.6);
+            cursor: pointer;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+
+        .blog-post-content {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .blog-image {
+            flex-shrink: 0;
+            width: 200px;
+            height: 140px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .recently-released {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .blog-post-title {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex: 1;
+            font-size: 15px;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .blog-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-to-home:hover {
+            background-color: rgba(0, 255, 136, 0.2);
+            color: var(--theme-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .blog-title-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .blog-post-content {
+                flex-direction: column;
+                padding: 16px;
+            }
+
+            .blog-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .blog-post-title {
+                font-size: 1.2rem;
+            }
+
+            .blog-excerpt {
+                font-size: 14px;
+            }
+
+            .topics-grid {
+                justify-content: flex-start;
+                gap: 8px;
+            }
+            
+            .topic-tag {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .topics-section {
+                position: relative;
+            }
+            
+            .topics-dropdown-btn {
+                display: flex;
+            }
+            
+            .topics-grid {
+                display: none;
+            }
+            
+            .topics-grid.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                background: rgba(25, 25, 25, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 8px;
+                padding: 12px;
+                z-index: 1000;
+                width: 100%;
+                max-height: 300px;
+                overflow-y: auto;
+                backdrop-filter: blur(10px);
+                top: 100%;
+                right: 0;
+            }
+            
+            .topics-grid.active .topic-tag {
+                text-align: left;
+                border-radius: 6px;
+                margin-bottom: 6px;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-page {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .blog-posts {
+                gap: 12px;
+            }
+
+            .blog-post-content {
+                padding: 14px;
+                gap: 16px;
+            }
+
+            .blog-post-title {
+                font-size: 1.1rem;
+            }
+            
+            .blog-excerpt {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+            
+            .blog-tag {
+                font-size: 11px;
+                padding: 4px 8px;
+                border-radius: 4px;
+            }
+            
+            .topic-tag {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="loader-wrapper">
+        <svg class="pl" viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="pl-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="hsl(193,90%,55%)" />
+                    <stop offset="100%" stop-color="hsl(223,90%,55%)" />
+                </linearGradient>
+            </defs>
+            <circle class="pl__ring" r="56" cx="64" cy="64" fill="none" stroke="hsla(0,10%,10%,0.1)" stroke-width="16"
+                stroke-linecap="round" />
+            <path class="pl__worm"
+                d="M92,15.492S78.194,4.967,66.743,16.887c-17.231,17.938-28.26,96.974-28.26,96.974L119.85,59.892l-99-31.588,57.528,89.832L97.8,19.349,13.636,88.51l89.012,16.015S81.908,38.332,66.1,22.337C50.114,6.156,36,15.492,36,15.492a56,56,0,1,0,56,0Z"
+                fill="none" stroke="url(#pl-grad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"
+                stroke-dasharray="44 1111" stroke-dashoffset="10" />
+        </svg>
+    </div>
+
+    <!-- Cursor element -->
+    <div id="custom-cursor"></div>
+
+    <!-- Header Navigation Bar -->
+    <header>
+        <nav>
+            <img src="assets/images/main-logo.png" alt="Not found" class="logo-img">
+            <div class="indian">
+                <img src="assets/images/flag.png" alt="flag">
+                <span>Indian</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-page">
+            <a href="portfolio.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+
+            <div class="blog-header">
+                <div class="blog-title-section">
+                    <h1>My 2025 Stack as a Frontend Developer</h1>
+                    <p class="blog-subtitle">Most recent posts first</p>
+                </div>
+                <div class="sort-dropdown">
+                    <button class="sort-btn" onclick="toggleSortOptions()">
+                        <i class="fas fa-calendar"></i>
+                        Newest First
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="sort-options" id="sortOptions">
+                        <div class="sort-option active" onclick="sortPosts('newest')">
+                            <i class="fas fa-calendar"></i>
+                            <div>
+                                <div>Newest First</div>
+                                <div style="font-size: 12px; color: #888;">Most recent posts first</div>
+                            </div>
+                        </div>
+                        <div class="sort-option" onclick="sortPosts('oldest')">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <div>Oldest First</div>
+                                <div style="font-size: 12px; color: #888;">Oldest posts first</div>
+                            </div>
+                        </div>
+                        <div class="sort-option" onclick="sortPosts('az')">
+                            <i class="fas fa-sort-alpha-down"></i>
+                            <div>
+                                <div>A to Z</div>
+                                <div style="font-size: 12px; color: #888;">Alphabetical order</div>
+                            </div>
+                        </div>
+                        <div class="sort-option" onclick="sortPosts('za')">
+                            <i class="fas fa-sort-alpha-up"></i>
+                            <div>
+                                <div>Z to A</div>
+                                <div style="font-size: 12px; color: #888;">Reverse alphabetical</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topics-section">
+                <div class="topics-title">
+                    <span># Topics</span>
+                    <button class="topics-dropdown-btn" onclick="toggleTopics()">
+                        <i class="fas fa-tags"></i>
+                        Select Topics
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="topics-grid" id="topicsGrid">
+                    <span class="topic-tag active" onclick="filterByTopic('all')">All</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('self-improvement')">Self-Improvement</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('productivity')">Productivity</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('mindset')">Mindset</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('study-tips')">Study Tips</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('career-goals')">Career & Goals</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('coding')">Coding</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('web-development')">Web Development</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('tech')">Tech</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('books-learning')">Books & Learning</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('travel')">Travel</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('lifestyle')">Lifestyle</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('minimalism')">Minimalism</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('health-fitness')">Health & Fitness</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('mental-health')">Mental Health</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('habits')">Habits</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('discipline')">Discipline</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('relationships')">Relationships</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('personal-growth')">Personal Growth</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('college-life')">College Life</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('german-language')">German Language</span>
+                    <span class="topic-tag" onclick="toggleTopicFilter('study-germany')">Study in Germany</span>
+                </div>
+            </div>
+
+            <div class="blog-posts" id="blogPosts">
+                <!-- Blog Post 1 -->
+                <article class="blog-post" data-date="2025-03-19" data-tags="web-development,tech,productivity,coding" onclick="window.location.href='blog-posts/frontend-stack-2025.html'">
+                    <div class="blog-post-content">
+                        <div class="blog-image">
+                            <img src="assets/images/blog-img-1.jpg" alt="My 2025 Stack as a Frontend Developer">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <div class="blog-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Mar 19, 2025 (2 mo ago)
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i>
+                                    4 min read
+                                </div>
+                                <span class="recently-released">Recently released</span>
+                            </div>
+                            <h2 class="blog-post-title">My 2025 Stack as a Frontend Developer</h2>
+                            <p class="blog-excerpt">
+                                As a Frontend Developer in 2025, I've fine-tuned my development environment with a set of powerful tools that enhance productivity, efficiency, and customization. Let me walk you through my stack and how these tools help me build better, faster, and more maintainable projects!
+                            </p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">Web Development</span>
+                                <span class="blog-tag">Tech</span>
+                                <span class="blog-tag">Productivity</span>
+                                <span class="blog-tag">Coding</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-post" data-date="2025-02-01" data-tags="web-development,coding,tech" onclick="window.location.href='blog-posts/nextjs-blog-guide.html'">
+                    <div class="blog-post-content">
+                        <div class="blog-image">
+                            <img src="assets/images/blog-img-2.jpg" alt="How to build a blog with Next.js and MDX">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <div class="blog-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Feb 1, 2025 (4 mo ago)
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i>
+                                    14 min read
+                                </div>
+                                <span class="recently-released">Recently released</span>
+                            </div>
+                            <h2 class="blog-post-title">How to build a blog with Next.js and MDX</h2>
+                            <p class="blog-excerpt">
+                                Using Next.js to build a blog is very easy! In this comprehensive guide, I'll show you how to create a modern, fast, and SEO-friendly blog using Next.js 14, MDX for content management, and TypeScript for type safety.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">Web Development</span>
+                                <span class="blog-tag">Coding</span>
+                                <span class="blog-tag">Tech</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-post" data-date="2024-12-16" data-tags="coding,productivity,books-learning,study-tips,mindset" onclick="window.location.href='blog-posts/programming-journey.html'">
+                    <div class="blog-post-content">
+                        <div class="blog-image">
+                            <img src="assets/images/blog-img-3.jpg" alt="Learning programming - easy to start, hard to master">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <div class="blog-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Dec 16, 2024 (6 mo ago)
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i>
+                                    10 min read
+                                </div>
+                                <span class="recently-released">Recently released</span>
+                            </div>
+                            <h2 class="blog-post-title">Learning programming - easy to start, hard to master</h2>
+                            <p class="blog-excerpt">
+                                There are many myths about programming. We will try to debunk a few. In addition, I'll share with you some tips I wanted to hear about when I started 😊. Programming is a journey of continuous learning and growth.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">Coding</span>
+                                <span class="blog-tag">Productivity</span>
+                                <span class="blog-tag">Books & Learning</span>
+                                <span class="blog-tag">Study Tips</span>
+                                <span class="blog-tag">Mindset</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-post" data-date="2024-11-20" data-tags="web-development,tech,coding,study-tips" onclick="window.location.href='blog-posts/css-flexbox-guide.html'">
+                    <div class="blog-post-content">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/200x120/1a1a1a/00ff88?text=CSS+Flexbox" alt="Mastering CSS Flexbox">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <div class="blog-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Nov 20, 2024 (7 mo ago)
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i>
+                                    8 min read
+                                </div>
+                            </div>
+                            <h2 class="blog-post-title">Mastering CSS Flexbox: A Complete Guide</h2>
+                            <p class="blog-excerpt">
+                                CSS Flexbox is one of the most powerful layout tools in modern web development. Learn how to create responsive, flexible layouts with ease using practical examples and best practices.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">Web Development</span>
+                                <span class="blog-tag">Tech</span>
+                                <span class="blog-tag">Coding</span>
+                                <span class="blog-tag">Study Tips</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-post" data-date="2024-10-15" data-tags="web-development,coding,tech,career-goals" onclick="window.location.href='blog-posts/react-hooks-guide.html'">
+                    <div class="blog-post-content">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/200x120/1a1a1a/00ff88?text=React+Hooks" alt="React Hooks Deep Dive">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <div class="blog-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Oct 15, 2024 (8 mo ago)
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i>
+                                    12 min read
+                                </div>
+                            </div>
+                            <h2 class="blog-post-title">React Hooks Deep Dive: Beyond useState and useEffect</h2>
+                            <p class="blog-excerpt">
+                                Explore advanced React Hooks patterns and learn how to create custom hooks that will make your React applications more maintainable and reusable. From useReducer to useCallback, we'll cover it all.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">Web Development</span>
+                                <span class="blog-tag">Coding</span>
+                                <span class="blog-tag">Tech</span>
+                                <span class="blog-tag">Career & Goals</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-post" data-date="2024-09-10" data-tags="productivity,web-development,tech,self-improvement" onclick="window.location.href='blog-posts/tailwind-productivity.html'">
+                    <div class="blog-post-content">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/200x120/1a1a1a/00ff88?text=Tailwind+CSS" alt="Tailwind CSS Productivity">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <div class="blog-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Sep 10, 2024 (9 mo ago)
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i>
+                                    6 min read
+                                </div>
+                            </div>
+                            <h2 class="blog-post-title">Why Tailwind CSS Boosted My Productivity by 300%</h2>
+                            <p class="blog-excerpt">
+                                Discover how Tailwind CSS transformed my development workflow and why utility-first CSS might be the game-changer you've been looking for. Real examples and productivity tips included.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">Productivity</span>
+                                <span class="blog-tag">Web Development</span>
+                                <span class="blog-tag">Tech</span>
+                                <span class="blog-tag">Self-Improvement</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="social-links">
+                <a href="https://github.com/webstar-vishalgupta" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="mailto:webstarforever@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/vishal-gupta-5655a4328/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/webstar_vishalgupta/" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <p class="copyright">
+                🛠️ Assembled with patience, ☕ caffeine & zero gravity. © 2023–2025 | Hand-coded in our lab 🧑‍💻. Bugs monitored via satellite 🛰️. All rights reserved.😍
+            </p>
+        </footer>
+    </main>
+
+    <script>
+        // Sort functionality
+        function toggleSortOptions() {
+            const sortOptions = document.getElementById('sortOptions');
+            sortOptions.classList.toggle('active');
+        }
+
+        function sortPosts(type) {
+            const blogPosts = document.getElementById('blogPosts');
+            const posts = Array.from(blogPosts.children);
+            
+            posts.sort((a, b) => {
+                switch(type) {
+                    case 'newest':
+                        return new Date(b.dataset.date) - new Date(a.dataset.date);
+                    case 'oldest':
+                        return new Date(a.dataset.date) - new Date(b.dataset.date);
+                    case 'az':
+                        return a.querySelector('.blog-post-title').textContent.localeCompare(b.querySelector('.blog-post-title').textContent);
+                    case 'za':
+                        return b.querySelector('.blog-post-title').textContent.localeCompare(a.querySelector('.blog-post-title').textContent);
+                    default:
+                        return 0;
+                }
+            });
+            
+            posts.forEach(post => blogPosts.appendChild(post));
+            
+            // Update active sort option
+            document.querySelectorAll('.sort-option').forEach(option => option.classList.remove('active'));
+            event.target.closest('.sort-option').classList.add('active');
+            
+            // Update sort button text
+            const sortBtn = document.querySelector('.sort-btn');
+            const sortText = event.target.closest('.sort-option').querySelector('div > div').textContent;
+            sortBtn.innerHTML = `<i class="fas fa-calendar"></i> ${sortText} <i class="fas fa-chevron-down"></i>`;
+            
+            toggleSortOptions();
+        }
+
+        // Global variable to track selected topics
+        let selectedTopics = [];
+        
+        // Toggle topics dropdown for mobile
+        function toggleTopics() {
+            const topicsGrid = document.getElementById('topicsGrid');
+            topicsGrid.classList.toggle('active');
+        }
+        
+        // Filter by topic functionality (single topic selection)
+        function filterByTopic(topic) {
+            const posts = document.querySelectorAll('.blog-post');
+            
+            // Reset selected topics when 'All' is clicked
+            selectedTopics = [];
+            
+            posts.forEach(post => {
+                if (topic === 'all') {
+                    post.style.display = 'block';
+                } else {
+                    const tags = post.dataset.tags;
+                    if (tags && tags.includes(topic)) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Update active topic
+            document.querySelectorAll('.topic-tag').forEach(tag => tag.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        // Toggle topic filter for multiple topic selection
+        function toggleTopicFilter(topic) {
+            const element = event.target;
+            
+            // Toggle active class
+            element.classList.toggle('active');
+            
+            // Update selected topics array
+            if (element.classList.contains('active')) {
+                // Add topic to selected topics
+                if (!selectedTopics.includes(topic)) {
+                    selectedTopics.push(topic);
+                }
+            } else {
+                // Remove topic from selected topics
+                selectedTopics = selectedTopics.filter(t => t !== topic);
+            }
+            
+            // If no topics selected, show all posts
+            if (selectedTopics.length === 0) {
+                document.querySelectorAll('.blog-post').forEach(post => {
+                    post.style.display = 'block';
+                });
+                
+                // Make 'All' active
+                document.querySelectorAll('.topic-tag').forEach(tag => {
+                    if (tag.textContent.trim() === 'All') {
+                        tag.classList.add('active');
+                    }
+                });
+                return;
+            }
+            
+            // Remove 'All' active class
+            document.querySelectorAll('.topic-tag').forEach(tag => {
+                if (tag.textContent.trim() === 'All') {
+                    tag.classList.remove('active');
+                }
+            });
+            
+            // Filter posts based on selected topics
+            const posts = document.querySelectorAll('.blog-post');
+            posts.forEach(post => {
+                const postTags = post.dataset.tags ? post.dataset.tags.split(',') : [];
+                
+                // Check if any of the selected topics match this post's tags
+                const hasMatchingTopic = selectedTopics.some(topic => 
+                    postTags.includes(topic)
+                );
+                
+                post.style.display = hasMatchingTopic ? 'block' : 'none';
+            });
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            // Close sort dropdown
+            const sortDropdown = document.querySelector('.sort-dropdown');
+            if (sortDropdown && !sortDropdown.contains(event.target)) {
+                document.getElementById('sortOptions').classList.remove('active');
+            }
+            
+            // Close topics dropdown on mobile
+            const topicsSection = document.querySelector('.topics-section');
+            const topicsDropdownBtn = document.querySelector('.topics-dropdown-btn');
+            if (topicsSection && !topicsSection.contains(event.target) || 
+                (topicsDropdownBtn && !topicsDropdownBtn.contains(event.target) && event.target !== topicsDropdownBtn)) {
+                document.getElementById('topicsGrid').classList.remove('active');
+            }
+        });
+    </script>
+
+    <script src="script/script.js"></script>
+    <script src="script/cursor.js"></script>
+</body>
+
+</html>
