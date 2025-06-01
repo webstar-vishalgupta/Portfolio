@@ -3,7 +3,7 @@
 body {
     height: 100%;
     background-color: #000000;
-    background-image: url('./assets/images/ba-pattern.png');
+    background-image: url('../assets/images/ba-pattern.png');
     background-size: contain;
     background-position: top 50px right;
     background-repeat: no-repeat;
